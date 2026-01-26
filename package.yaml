@@ -48,3 +48,12 @@ executables:
         dependencies: text >= 1.2
         ghc-options:
             - -Wno-error=x-partial
+
+    vocab-builder:
+        source-dirs: src
+        main: vocab2.hs
+        other-modules: []
+        dependencies: text >= 1.2
+        ghc-options:
+            - -Wno-error=x-partial
+            - -Wno-error=incomplete-patterns
