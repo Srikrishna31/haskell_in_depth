@@ -1,0 +1,47 @@
+name: haskell_in_depth
+version: 0.1.0.0
+author: Krishna Addepalli
+synopsis: Building examples from the book "Haskell in Depth"
+description: This package contains code examples from the book "Haskell in Depth" by Krishna Addepalli.
+license: MIT
+category: Haskell
+maintainer: Krishna Addepalli <coolkrishna31@gmail.com>
+github: Srikrishna31/haskell-in-depth
+extra-source-files:
+    - README.md
+    - stack.yaml
+    - package.yaml
+
+data-files:
+    - data/*.*
+    - data/texts/*.*
+    - data/tests/iplookup/*.*
+    - data/benchmarks/iplookup/*.*
+
+flags:
+    with-pg:
+        manual: True
+        default: False
+
+ghc-options:
+    - -Wall
+    - -Werror
+    - -Widentities
+    - -Wno-unused-imports
+    - -Wno-unused-matches
+    - -Wno-missing-fields
+    - -Wincomplete-record-updates
+    - -Wincomplete-uni-patterns
+    - -Wno-orphans
+    - -Wno-error=unrecognised-warning-flags
+    - -Wno-unused-top-binds
+    - -Wno-unused-local-binds
+
+executables:
+    vocab1:
+        source-dirs: src
+        main: vocab1.hs
+        other-modules: []
+        dependencies: text >= 1.2 && <2.2
+        ghc-options:
+            - -Wno-error=x-partial
