@@ -1,4 +1,4 @@
-name: haskell_in_depth
+name: haskell-in-depth
 version: 0.1.0.0
 author: Krishna Addepalli
 synopsis: Building examples from the book "Haskell in Depth"
@@ -6,7 +6,7 @@ description: This package contains code examples from the book "Haskell in Depth
 license: MIT
 category: Haskell
 maintainer: Krishna Addepalli <coolkrishna31@gmail.com>
-github: Srikrishna31/haskell-in-depth
+github: Srikrishna31/haskell_in_depth
 extra-source-files:
     - README.md
     - stack.yaml
@@ -17,6 +17,9 @@ data-files:
     - data/texts/*.*
     - data/tests/iplookup/*.*
     - data/benchmarks/iplookup/*.*
+
+dependencies:
+    - base >= 4.20.2.0
 
 flags:
     with-pg:
@@ -42,6 +45,6 @@ executables:
         source-dirs: src
         main: vocab1.hs
         other-modules: []
-        dependencies: text >= 1.2 && <2.2
+        dependencies: text >= 1.2
         ghc-options:
             - -Wno-error=x-partial
