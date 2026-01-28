@@ -57,3 +57,16 @@ executables:
         ghc-options:
             - -Wno-error=x-partial
             - -Wno-error=incomplete-patterns
+
+    vocab3:
+        source-dirs: src
+        main: vocab3.hs
+        other-modules: []
+        other-extensions:
+            - OverloadedStrings
+        dependencies:
+            - text >= 1.2
+            - fmt >= 0.8.0
+        ghc-options:
+            - -Wno-error=x-partial
+            - -Wno-error=incomplete-patterns
