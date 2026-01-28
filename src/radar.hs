@@ -12,8 +12,8 @@
         -> When given a file with a list of directions, the program computes and reports the corresponding set of turns to orient
         the radar antenna as required.
 -}
-data Direction = North | East | South | West
-data Turn = TNone | TLeft | TRight | TAround
+data Direction = North | East | South | West deriving (Eq, Enum, Bounded, Show)
+data Turn = TNone | TLeft | TRight | TAround deriving (Eq, Enum, Bounded, Show)
 
 
 -- rotate: Determine a new antenna direction after rotating.
@@ -23,16 +23,69 @@ rotate TLeft North = West
 rotate TLeft East = North
 -- orient: find a rotation to change an orientation from the first given direction to the second one.
 orient :: Direction -> Direction -> Turn
-
+orient _ _ = TNone
 
 rotateMany :: Direction -> [Turn] -> Direction
+rotateMany _ _ = North
 
 rotateManySteps :: Direction -> [Turn] -> [Direction]
+rotateManySteps _ _ = [North]
 
 orientMany :: [Direction] -> [Turn]
+orientMany _ = [TNone]
 
 
 rotateFromFile :: Direction -> FilePath -> IO ()
+rotateFromFile _ _ = do
+    putStrLn "TODO"
+
 orientFromFile :: FilePath -> IO ()
+orientFromFile _ = do
+    putStrLn "TODO"
 
 main:: IO()
+main = do
+    putStrLn "TODO"
+
+
+{-
+    In Haskell, we have the Eq type class with two methods, (==) and (/=).
+        class Eq a where
+            (==), (/=)  ::a -> a -> Bool
+
+            {-# INLINE (/=) #-}
+            {-# INLINE (/=) #-}
+            x /= y  = not (x == y)      -- Default method implementation
+            x == y  = not (x /= y)
+
+            {-# MINIMAL (==) | (/=) #-} -- Minimal complete definition: It's enough to implement either (==) or (/=)
+
+
+    Other useful concepts are boundedness and enumeration. In Haskell they are represented by the type classes
+    Bounded (for types with minimum and maximum bounds) and Enum (for types whose values can be enumerated by the
+    Int values).
+
+        class Bounded a where
+            minBound: a
+            maxBound: a
+
+            {-# MINIMAL minBound, maxBound #-}
+
+        class Enum a where
+            succ :: a -> a
+            pred :: a -> a
+            toEnum :: Int -> a
+            fromEnum :: a -> Int
+            enumFrom :: a -> [a]
+            enumFromThen :: a -> a -> [a]
+            enumFromTo :: a -> a -> [a]
+            enumFromThenTo :: a -> a -> a -> [a]
+            {-# MINIMAL toEnum, fromEnum #-}
+
+    Intuition:
+        -> If the values of a type can be checked for equality, we define an instance of the Eq type class
+        -> If it makes sense to enumerate elements of a type one by one, then it is a good sign that we should
+        implement Enum. The moment we do that, we get a bunch of methods we can use with its values.
+        -> If a data type suppports the idea of minimum and maximum values, then we define the Bounded instance.
+
+-}

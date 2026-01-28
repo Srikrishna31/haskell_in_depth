@@ -70,3 +70,16 @@ executables:
         ghc-options:
             - -Wno-error=x-partial
             - -Wno-error=incomplete-patterns
+
+    radar:
+        source-dirs: src
+        main: radar.hs
+        other-modules: []
+        other-extensions:
+            - OverloadedStrings
+        dependencies:
+            - text >= 1.2
+            - fmt >= 0.8.0
+        ghc-options:
+            - -Wno-error=x-partial
+            - -Wno-error=incomplete-patterns
