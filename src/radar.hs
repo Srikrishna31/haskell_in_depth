@@ -206,6 +206,12 @@ instance Buildable Turn where
     build TRight = "->"
     build TAround = "||"
 
+{-
+    Ordering is built upon equality and adds several operators and functions. It is enough to implement only one function, compare, or one
+    operator (<=), to get all the other functions for free.
+-}
+deriving instance Ord Turn
+
 rotateFromFile :: Direction -> FilePath -> IO ()
 rotateFromFile dir fname = do
     f <- readFile fname
